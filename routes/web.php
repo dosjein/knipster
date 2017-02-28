@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+//do grouping @todo @fix
+Route::any('/customer/create' , 'CustomerApiController@create');
+Route::any('/customer/edit' , 'CustomerApiController@edit');
+
+Route::any('/money/balance' , 'MoneyApiController@deposit');
+Route::any('/money/deposit' , 'MoneyApiController@deposit');
+Route::any('/money/widraw' , 'MoneyApiController@widraw');
