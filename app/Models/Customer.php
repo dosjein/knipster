@@ -10,4 +10,9 @@ class Customer extends BaseModel {
 
     protected $table = 'customers';
 
+    public function prepareBonusLevel()
+    {
+        $this->bonus = rand(5 , 20);
+    }
+
 }

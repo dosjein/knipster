@@ -15,6 +15,7 @@ class CreateTransactions extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('customer_id');
             $table->integer('type')->default(0);
             $table->longText('description');
             $table->integer('amouth')->default(0);

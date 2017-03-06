@@ -16,6 +16,7 @@ class CreateCustomer extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer("gender")->default(0);
+            $table->integer("bonus")->default(0);
             $table->string('first_name' , 250)->index();
             $table->string('last_name' , 250)->index();
             $table->string('country' , 250)->index();

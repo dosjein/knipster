@@ -33,14 +33,14 @@ class CustomerApiController extends Controller
                 $customer = new Customer();
                 $customer->gender = $return['gender'];
                 $customer->first_name = $return['first_name'];      
-                $customer->first_name = $return['last_name'];   
-                $customer->first_name = $return['country'];   
-                $customer->first_name = $return['email'];  
+                $customer->last_name = $return['last_name'];   
+                $customer->country = $return['country'];   
+                $customer->email = $return['email'];  
                 $customer->prepareBonusLevel(); 
 
                 if ($customer->save()){
-                    $return['customer_id'] = $customer;
-                    $reutrn['status'] = 1;
+                    $return['customer_id'] = $customer->id;
+                    $return['status'] = 1;
                 }else{
                     $return['error'] = 'Customer save error';
                 }
@@ -66,10 +66,11 @@ class CustomerApiController extends Controller
         $customerRequest = false;
         $return['status'] = 0;   
 
-        if (isset($reutrn['id']) && intval($reutrn['id']) > 0){
-            $customerRequest = Customer::where('id' , intval($reutrn['id']));
-        }else if (isset($reutrn['email']) && strlen($reutrn['email']) > 0){
-            $customerRequest = Customer::where('email' , intval($reutrn['email']));
+
+        if (isset($return['id']) && intval($return['id']) > 0){
+            $customerRequest = Customer::where('id' , intval($return['id']));
+        }else if (isset($return['email']) && strlen($return['email']) > 0){
+            $customerRequest = Customer::where('email' , $return['email']);
         } 
 
         if ($customerRequest && $customerRequest->count() > 0){

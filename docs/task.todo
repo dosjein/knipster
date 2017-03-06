@@ -1,0 +1,38 @@
+ ☐ Implement a REST API that shall be used internally, so no authentication is needed. Format shall be JSON. No front­end or graphical interface is needed. 
+ 
+We need the following functionality/endpoints: 
+ 
+ ✔ ● Add new customer (gender, first name, last name, country, email) @done (17-03-06 09:41)
+ ✔ ○ each customer during creation should have assigned random bonus parameter @done (17-03-06 09:41)
+between 5% and 20% 
+ ✔ ○ email shall be unique @done (17-03-06 09:41)
+ ✔ ● Edit customer details given on registration @done (17-03-06 09:41)
+ 
+For each customer the following operations shall be possible: 
+ 
+ ✔ ● Deposit Money @done (17-03-06 11:11)
+ ✔ ○ Every 3rd deposit of the customer should be awarded with bonus on the deposit amount according to his bonus parameter. For instance if a customer with 10% bonus is making deposit of 100 EUR, his balance shall increase by 110 EUR @done (17-03-06 11:11)
+ ✔ ○ Bonus balance needs to be kept separate from real money balance @done (17-03-06 11:12)
+ ✔ ● Withdraw Money @done (17-03-06 11:12)
+ ✔ ○ Customer balance can never go below 0 and bonus money cannot be withdrawn. @done (17-03-06 11:12)
+For instance if customer balance is 110 EUR, but 10 EUR is bonus money, the 
+maximum withdrawal amount is 100 EUR. 
+ ☐ ● Reporting 
+ ☐ ○ Endpoint generating a list of the total deposits and withdrawals (unique customers doing at least one deposit or withdrawal, number and total amount of both, deposits and withdrawals) per country and date for a given time frame (default: last 7 days). Example: 
+  
+ 
+Date  Country  Unique 
+Customers  No of 
+Deposits  Total 
+Deposit 
+Amount  No of 
+Withdrawals  Total 
+Withdrawal 
+Amount 
+2015­05­06  MT  32  45  456.34  24  ­200.45 
+2015­05­06  DE  16  14  65.32  6  ­456.34 
+ 
+ 
+ ☐ Financial operations (deposit/withdrawal) needs to be implemented in a way that ensures data integrity also for situations where different transaction requests are made at the same moment. 
+ 
+ ☐ Please implement tests you consider useful for a CI approach for at least part of the code, e.g. the functionality of one endpoint. 
